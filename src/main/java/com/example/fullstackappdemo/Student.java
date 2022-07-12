@@ -16,6 +16,14 @@ public class Student {
     public Student() {
     }
 
+    public Student(int id, String firstName, String surName, String mail, String pictureUrl) {
+        this.id = id;
+        this.firstName = firstName;
+        this.surName = surName;
+        this.mail = mail;
+        this.pictureUrl = pictureUrl;
+    }
+
     public int getId() {
         return id;
     }
