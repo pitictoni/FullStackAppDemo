@@ -20,4 +20,24 @@ public class StudentServices {
         students.add(new Student(3,"Alexandra", "Rada", "alexandra.rada@ulbsibiu.ro","..\\img\\pozaLuRada.jpg"));
         return (ArrayList<Student>) studentRepository.saveAll(students);
     }
+
+    public ArrayList<Student> getAllStudents() {
+        return (ArrayList<Student>) studentRepository.findAll();
+    }
+
+    public Student getStudentById(int id) {
+        return studentRepository.findById(id).get();
+    }
+
+    public Student addStudent(Student student) {
+        return studentRepository.save(student);
+    }
+
+    public void deleteStudentById(int id) {
+        studentRepository.deleteById(id);
+    }
+
+    public Student modifyStudent(Student modifiedStudent) {
+        return studentRepository.save(modifiedStudent);
+    }
 }

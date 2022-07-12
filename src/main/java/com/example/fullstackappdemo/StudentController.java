@@ -1,14 +1,11 @@
 package com.example.fullstackappdemo;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
-@Controller
+@RestController
 @RequestMapping("/student")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class StudentController {
@@ -21,6 +18,30 @@ public class StudentController {
     @PostMapping("/addTestData")
     public ArrayList<Student> addTestStudents(){
         return studentServices.addTestStudents();
+    }
+
+    @PostMapping("/add")
+    public Student addStudent(@RequestBody Student student){
+        return studentServices.addStudent(student);
+    }
+    @GetMapping("/all")
+    public ArrayList<Student> getAllStudents(){
+        return studentServices.getAllStudents();
+    }
+
+    @GetMapping("/{id}")
+    public Student getAllStudents(@PathVariable int id){
+        return studentServices.getStudentById(id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteById(@PathVariable int id){
+        studentServices.deleteStudentById(id);
+    }
+
+    @PutMapping("/modify")
+    public Student modifyStudent(@RequestBody Student modifiedStudent){
+        return studentServices.modifyStudent(modifiedStudent);
     }
 
 }
